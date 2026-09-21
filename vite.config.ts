@@ -5,7 +5,25 @@ import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 import path from "node:path";
 import fs from "node:fs";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "node:path";
 
+export default defineConfig({
+  plugins: [react()],
+  root: path.resolve(__dirname, "client"), // กำหนดให้ Vite หา index.html ในโฟลเดอร์ client
+  base: "/intevia-website/",
+  build: {
+    outDir: path.resolve(__dirname, "dist/public"), // กำหนดให้ build ออกมาที่ dist/public
+    emptyOutDir: true,
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./client/src"),
+      "@shared": path.resolve(__dirname, "./shared"),
+    },
+  },
+});
 // ============================================================================
 // Manus Debug Collector - Vite Plugin
 // ============================================================================
