@@ -8,7 +8,13 @@ import fs from "node:fs";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "node:path";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+export default defineConfig({
+  plugins: [react()],
+  base: '/intevia-website/', // ต้องใส่ชื่อ repository ให้ตรงกัน
+})
 export default defineConfig({
   plugins: [react()],
   root: path.resolve(__dirname, "client"), // กำหนดให้ Vite หา index.html ในโฟลเดอร์ client
